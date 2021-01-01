@@ -1,0 +1,21 @@
+* Revision history for bnt162b2
+
+** 0.0.0.1a -- 2021-01-01
+
+   Added an incomplete Haskell binary and library for analyzing and rewriting
+   RNA sequences.
+
+   Rewriting is hard-coded to maximize Gs and Cs.
+   No analysis code available yet.
+
+   I intend to figure out why the rewriting with some fixed "optimal" Codons is
+   not enough.
+   I'm guessing there's some attempt to introduce variance of the codons
+   synonyms to ease gathering the inputs needed for copying them. I'd expect to
+   be some local optimization as the copying process seems to be stream-based,
+   so in any window of the sequence we wish to avoid needing too many of some
+   "build inputs".
+
+** 0.0.0.1 -- 2021-01-01
+
+   First version.

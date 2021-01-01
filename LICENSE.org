@@ -1,0 +1,7 @@
+* License
+** Haskell
+  
+   The haskell code is made available under the [[https://spdx.org/licenses/preview/AGPL-3.0.html][GNU AGPL 3.0]] or later.
+** Other
+
+   The existing code did not have an explicit license.
