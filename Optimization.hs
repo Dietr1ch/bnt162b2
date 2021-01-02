@@ -28,25 +28,25 @@ bestCodon Leucine = RNACodon C U G
 --bestCodon Leucine = RNACodon C U C
 bestCodon Isoleucine = RNACodon A U C -- Optimal
 bestCodon Methionine = RNACodon A U G -- Unique
-bestCodon Valine = RNACodon G U G
---bestCodon Valine = RNACodon G U C
+--bestCodon Valine = RNACodon G U G
+bestCodon Valine = RNACodon G U C
 
-bestCodon Proline = RNACodon C C G
---bestCodon Proline = RNACodon C C C
-bestCodon Alanine = RNACodon G C G
---bestCodon Alanine = RNACodon G C C
+--bestCodon Proline = RNACodon C C G
+bestCodon Proline = RNACodon C C C
+--bestCodon Alanine = RNACodon G C G
+bestCodon Alanine = RNACodon G C C
 
 bestCodon Tryptophan = RNACodon U G G  -- Unique
-bestCodon Glycine = RNACodon G G G
---bestCodon Glycine = RNACodon G G C
+--bestCodon Glycine = RNACodon G G G
+bestCodon Glycine = RNACodon G G C
 
 -- Polar
 -- -----
-bestCodon Serine = RNACodon U C G
---bestCodon Serine = RNACodon U C C
+--bestCodon Serine = RNACodon U C G
+bestCodon Serine = RNACodon U C C
 --bestCodon Serine = RNACodon A G C
-bestCodon Threonine = RNACodon A C G
---bestCodon Threonine = RNACodon A C C
+--bestCodon Threonine = RNACodon A C G
+bestCodon Threonine = RNACodon A C C
 
 bestCodon Tyrosine = RNACodon U A C -- Optimal
 bestCodon Glutamine = RNACodon C A G -- Optimal
