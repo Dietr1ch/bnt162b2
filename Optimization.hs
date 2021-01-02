@@ -25,27 +25,27 @@ bestCodon :: RNAAminoAcid -> RNACodon
 -- ---------
 bestCodon Phenylalanine = RNACodon U U C -- Optimal
 bestCodon Leucine = RNACodon C U G
---bestCodon Leucine = RNACodon C U C
+-- bestCodon Leucine = RNACodon C U C -- -102
 bestCodon Isoleucine = RNACodon A U C -- Optimal
 bestCodon Methionine = RNACodon A U G -- Unique
---bestCodon Valine = RNACodon G U G
-bestCodon Valine = RNACodon G U C
+bestCodon Valine = RNACodon G U G
+-- bestCodon Valine = RNACodon G U C  -- -79
 
---bestCodon Proline = RNACodon C C G
+-- bestCodon Proline = RNACodon C C G -- -26
 bestCodon Proline = RNACodon C C C
---bestCodon Alanine = RNACodon G C G
+-- bestCodon Alanine = RNACodon G C G  -- -65
 bestCodon Alanine = RNACodon G C C
 
 bestCodon Tryptophan = RNACodon U G G  -- Unique
---bestCodon Glycine = RNACodon G G G
+-- bestCodon Glycine = RNACodon G G G  -- -63
 bestCodon Glycine = RNACodon G G C
 
 -- Polar
 -- -----
---bestCodon Serine = RNACodon U C G
-bestCodon Serine = RNACodon U C C
---bestCodon Serine = RNACodon A G C
---bestCodon Threonine = RNACodon A C G
+-- bestCodon Serine = RNACodon U C G -- -64
+-- bestCodon Serine = RNACodon U C C -- -42
+bestCodon Serine = RNACodon A G C
+-- bestCodon Threonine = RNACodon A C G -- -63
 bestCodon Threonine = RNACodon A C C
 
 bestCodon Tyrosine = RNACodon U A C -- Optimal
@@ -65,8 +65,9 @@ bestCodon AsparticAcid = RNACodon G A C -- Optimal
 bestCodon GlutamicAcid = RNACodon G A G -- Optimal
 
 -- Stop
-bestCodon Stop = RNACodon U A G
---bestCodon Stop = RNACodon U G A
+-- bestCodon Stop = RNACodon U A G -- -1
+bestCodon Stop = RNACodon U G A -- 0
+-- bestCodon Stop = RNACodon U G A -- 0
 
 
 optimize :: RNAFasta -> RNAFasta
