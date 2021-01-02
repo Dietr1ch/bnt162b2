@@ -25,10 +25,10 @@ main = do
   Just covid   <- readFasta "ncov-s.fasta"
   let  opt = optimize covid
 
-  writeFile "vaccine.fasta.rnafasta" (fShow $ vaccine)
-  writeFile "covid.fasta.rnafasta" (fShow $ covid)
-  writeFile "optimized.fasta.rnafasta" (fShow opt)
+  writeFile "out/vaccine.fasta.rnafasta" (fShow $ vaccine)
+  writeFile "out/covid.fasta.rnafasta" (fShow $ covid)
+  writeFile "out/optimized.fasta.rnafasta" (fShow opt)
 
-  writeFile "opt-vaccine.fasta_diff"   (dShow (diff opt vaccine))
-  writeFile "covid-opt.fasta_diff"     (dShow (diff covid opt))
-  writeFile "covid-vaccine.fasta_diff" (dShow (diff covid vaccine))
+  writeFile "out/diffs/opt-vaccine.fasta_diff"   (dShow (diff opt vaccine))
+  writeFile "out/diffs/covid-opt.fasta_diff"     (dShow (diff covid opt))
+  writeFile "out/diffs/covid-vaccine.fasta_diff" (dShow (diff covid vaccine))
