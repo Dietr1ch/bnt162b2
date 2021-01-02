@@ -72,7 +72,7 @@ instance PrettyPrint FastaDiff where
                              , "Wrong:  " ++ (sizeCompare wrong total)
                              , "Total:  " ++ (show total)
                              , ""
-                             , (cmpDiffs (codonDiffs d))]
+                             , cmpDiffs cDiffs]
              where
                hLeft  = l d
                hRight = r d
