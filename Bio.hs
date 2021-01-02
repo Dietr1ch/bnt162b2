@@ -2,18 +2,24 @@ module Bio ( RNANucleobase(..)
            , RNACodon(..)
            , RNAAminoAcid(..)
            , from
+           , RNAFasta(..)
+           , fShow
            ) where
 
--- RNA facts
+import Data.Text (Text, unpack)
+import Data.List (intercalate)
 
 data RNANucleobase = A
                    | C
                    | G
                    | U
-                   deriving (Eq, Show)
+                   deriving (Eq, Show, Read)
 
 data RNACodon = RNACodon RNANucleobase RNANucleobase RNANucleobase
-                deriving (Eq, Show)
+                deriving (Eq, Show, Read)
+
+codonShow :: RNACodon -> String
+codonShow (RNACodon a b c) = (show a) ++ (show b) ++ (show c)
 
 data RNAAminoAcid = Phenylalanine
                   | Leucine
@@ -40,7 +46,7 @@ data RNAAminoAcid = Phenylalanine
                   | GlutamicAcid
                   -- Stop
                   | Stop
-                  deriving (Eq, Show)
+                  deriving (Eq, Show, Read)
 
 -- https://en.wikipedia.org/wiki/DNA_and_RNA_codon_tables#Standard_RNA_codon_table
 from :: RNACodon -> RNAAminoAcid
@@ -91,3 +97,14 @@ from (RNACodon A G C) = Serine
 from (RNACodon A G _) = Arginine
 -- Codons G G *
 from (RNACodon G G _) = Glycine
+
+
+data RNAFasta = RNAFasta { header :: Text
+                         , codons :: [RNACodon]
+                         } deriving (Eq, Show, Read)
+
+cShow :: [RNACodon] -> String
+cShow c = intercalate " " (map codonShow c)
+
+fShow :: RNAFasta -> String
+fShow RNAFasta { header=h, codons=c } = (unpack h) ++ "\n" ++ cShow c

@@ -17,6 +17,8 @@ mkShell {
     # haskell
     ghc
     cabal-install
+    # deps
+    zlib
   ];
 
   shellHook = ''

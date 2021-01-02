@@ -1,9 +1,16 @@
+{-# LANGUAGE OverloadedStrings #-}
+
 module Optimization ( bestCodon
+                    , optimize
                     ) where
+
+import qualified Data.Text as T
 
 import Bio ( RNANucleobase(..)
            , RNACodon(..)
            , RNAAminoAcid(..)
+           , RNAFasta(..)
+           , from
            )
 
 -- Codon maximizing Gs and Cs. Preferring Gs over Cs.
@@ -60,3 +67,8 @@ bestCodon GlutamicAcid = RNACodon G A G -- Optimal
 -- Stop
 bestCodon Stop = RNACodon U A G
 --bestCodon Stop = RNACodon U G A
+
+
+optimize :: RNAFasta -> RNAFasta
+optimize rna = rna { header=T.concat ["Optimized | ", (header rna)]
+                   , codons=(map (bestCodon . from) (codons rna)) }
