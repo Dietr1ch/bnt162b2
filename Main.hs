@@ -10,6 +10,9 @@ import Bio ( RNANucleobase(..)
            , from
            , fShow
            )
+import Diff ( diff
+            , dShow
+            )
 import Parser ( readFasta
               )
 import Optimization ( bestCodon
@@ -18,36 +21,14 @@ import Optimization ( bestCodon
 
 main :: IO ()
 main = do
-  putStrLn "Lib self-test"
-  putStrLn "============="
-  putStrLn "some Codon"
-  let someCodon = RNACodon U U U
-  let someAA = from someCodon
-  putStrLn (show someCodon)
-  putStrLn (show someAA)
+  Just vaccine <- readFasta "vaccine-s.fasta"
+  Just covid   <- readFasta "ncov-s.fasta"
+  let  opt = optimize covid
 
-  putStrLn ""
-  putStrLn "optimized Codon"
-  let best = (bestCodon someAA)
-  let bestAA = from best
-  putStrLn (show best)
-  putStrLn (show bestAA)
+  writeFile "vaccine.fasta.rnafasta" (fShow $ vaccine)
+  writeFile "covid.fasta.rnafasta" (fShow $ covid)
+  writeFile "optimized.fasta.rnafasta" (fShow opt)
 
-  putStrLn ""
-  putStrLn "Data"
-  putStrLn "===="
-
-  Just fastaVaccine <- readFasta "vaccine-s.fasta"
-  Just fastaCovid   <- readFasta "ncov-s.fasta"
-
-  putStrLn ""
-  putStrLn "Vaccine:"
-  putStrLn $ fShow $ fastaVaccine
-
-  putStrLn ""
-  putStrLn "Covid:"
-  putStrLn $ fShow $ fastaCovid
-
-  putStrLn ""
-  putStrLn "Optimized:"
-  putStrLn $ fShow $ optimize fastaCovid
+  writeFile "opt-vaccine.fasta_diff"   (dShow (diff opt vaccine))
+  writeFile "covid-opt.fasta_diff"     (dShow (diff covid opt))
+  writeFile "covid-vaccine.fasta_diff" (dShow (diff covid vaccine))

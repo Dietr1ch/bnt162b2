@@ -104,7 +104,7 @@ data RNAFasta = RNAFasta { header :: Text
                          } deriving (Eq, Show, Read)
 
 cShow :: [RNACodon] -> String
-cShow c = intercalate " " (map codonShow c)
+cShow c = intercalate "\n" (map codonShow c)
 
 fShow :: RNAFasta -> String
-fShow RNAFasta { header=h, codons=c } = (unpack h) ++ "\n" ++ cShow c
+fShow RNAFasta { header=h, codons=c } = (unpack h) ++ "\n\n" ++ cShow c

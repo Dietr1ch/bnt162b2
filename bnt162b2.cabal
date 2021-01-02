@@ -17,7 +17,7 @@ extra-source-files:  CHANGELOG.org, README.md
 
 library
   -- exposed-modules:
-  other-modules: Bio Parser Optimization
+  other-modules: Bio Diff Parser Optimization
   -- other-extensions:
   build-depends:       base ^>=4.14.1.0,
                        fasta ^>=0.10.4.2,
@@ -27,7 +27,7 @@ library
 
 executable bnt162b2
   main-is:             Main.hs
-  other-modules:       Bio Parser Optimization
+  other-modules:       Bio Diff Parser Optimization
   -- other-extensions:
   build-depends:       base ^>=4.14.1.0,
                        fasta ^>=0.10.4.2,
